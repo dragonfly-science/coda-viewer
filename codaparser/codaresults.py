@@ -1,6 +1,8 @@
 import os
 from exceptions import BaseException, NotImplementedError
 from itertools import islice
+from numpy import array, float32
+
 
 class CODAFormatException(BaseException):
     pass
@@ -55,5 +57,8 @@ class CodaResults(object):
             start = int(pos['start']) - 1 # file's line count starts at 1
             end = int(pos['end']) 
             var_iter = islice(chain_file, start, end)
-            return [float(l.split()[1]) for l in list(var_iter)]
+            return array([float(l.split()[1]) for l in list(var_iter)], 
+                         dtype=float32)
+        
+        
     
