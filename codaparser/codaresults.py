@@ -1,5 +1,6 @@
 import os
-from exceptions import BaseException, RuntimeError
+from exceptions import BaseException, NotImplementedError
+from itertools import islice
 
 class CODAFormatException(BaseException):
     pass
@@ -31,6 +32,7 @@ class CodaResults(object):
         'takes a directory containing CODA files as input'
         valid_coda_directory(result_directory)
         self.indexpath = result_directory + '/CODAindex.txt'
+        self.directory = result_directory
         self.parse_coda_index_file()
         
     def parse_coda_index_file(self):
@@ -42,10 +44,16 @@ class CodaResults(object):
     def variables(self):
         return self.params_dict.keys()
         
-        
-if __name__ == '__main__':
-    import sys
-    res = CodaResults(sys.argv[1])
-    print res.variables
-        
+    def get_data(self, variable, chain=1):
+        if not variable in self.params_dict:
+            raise CODAFormatException('%s in not a valid variable' % variable)
+        # currently only support chain=1
+        if chain != 1:
+            raise NotImplementedError
+        with open(self.directory + '/CODAchain%i.txt' % chain) as chain_file:
+            pos = self.params_dict[variable]
+            start = int(pos['start']) - 1 # file's line count starts at 1
+            end = int(pos['end']) 
+            var_iter = islice(chain_file, start, end)
+            return [float(l.split()[1]) for l in list(var_iter)]
     
