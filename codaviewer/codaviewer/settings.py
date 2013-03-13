@@ -3,8 +3,17 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+BASEDIR = None
+if DEBUG:
+    from os.path import abspath, dirname
+    BASEDIR = dirname(dirname(dirname(abspath(__file__))))
+
+# Asserting here to make sure that when this project is deployed the location
+# of static files and datasets are set correctly.
+assert BASEDIR
+
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Christopher Knox', 'chris@dragonfly.co.nz'),
 )
 
 MANAGERS = ADMINS
