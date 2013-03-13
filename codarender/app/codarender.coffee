@@ -13,7 +13,6 @@ fetch_data = (dataset, variable, success) ->
 render_trace = (divid, dataset, variable) ->
     # hack
     timesteps = d3.range(10001, 109982, 20)
-    console.log timesteps[0..20]
 
     margin = {top: 20, right: 20, bottom: 30, left: 50}
     width = 960 - margin.left - margin.right
@@ -39,7 +38,6 @@ render_trace = (divid, dataset, variable) ->
     
     # after having set everything up do the asynchronous bit
     fetch_data(dataset, variable, (buf) ->
-        #buf = [buf[i] for i in [0..20]][0]
         y.domain(d3.extent(buf, (d) -> d))
         
         svg.append("g")
@@ -59,7 +57,7 @@ render_trace = (divid, dataset, variable) ->
         
         svg.append("path")
           .datum(d3.zip(timesteps, buf))
-          .attr("class", "line")
+          .attr("class", "line-trace")
           .attr("d", line)
     )
     
