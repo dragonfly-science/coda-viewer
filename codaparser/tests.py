@@ -3,7 +3,7 @@ from nose.tools import ok_, eq_, assert_almost_equal, raises
 import os
 
 bad_coda_directory = "this_is_not_a_directory"
-basedir = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 good_coda_directory = basedir + '/testdata/dolphins'
 
 
