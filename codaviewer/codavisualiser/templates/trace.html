@@ -5,5 +5,10 @@
 </head>
 <body>
   <h1>A Trace Plot of {{ variable }} from {{ dataset }}</h1>
+  <div id='trace-plot'></div>
+  <script>
+  var app = require('codarender');
+  app.render_trace('trace-plot', '{{ dataset }}', '{{ variable }}');
+  </script>
 </body>
 </html>

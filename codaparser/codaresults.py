@@ -59,6 +59,4 @@ class CodaResults(object):
             var_iter = islice(chain_file, start, end)
             return array([float(l.split()[1]) for l in list(var_iter)], 
                          dtype=float32)
-        
-        
-    
+                         

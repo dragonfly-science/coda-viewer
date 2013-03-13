@@ -9,3 +9,10 @@ def variables(request, dataset):
     variables_list = codaaccess.variables(dataset)
     context = Context({'dataset': dataset, 'variables': variables_list})
     return HttpResponse(template.render(context))
+   
+    
+def trace(request, dataset, variable):
+    'renders a trace plot (hairy caterpiller) for the specified variable'
+    template = loader.get_template('trace.html')
+    context = Context({'dataset': dataset, 'variable': variable})
+    return HttpResponse(template.render(context))
