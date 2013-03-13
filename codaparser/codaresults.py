@@ -44,7 +44,7 @@ class CodaResults(object):
             
     @property
     def variables(self):
-        return self.params_dict.keys()
+        return sorted(self.params_dict.keys())
         
     def get_data(self, variable, chain=1):
         if not variable in self.params_dict:
