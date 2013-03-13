@@ -1,7 +1,7 @@
 
 fetch_data = (dataset, variable, success) ->
     xhr = new XMLHttpRequest()
-    xhr.open('GET', "/api/#{dataset}/data/#{variable}", true);
+    xhr.open('GET', "/api.v0/#{dataset}/data/#{variable}", true);
     xhr.responseType = 'arraybuffer';
 
     xhr.onload = (e) ->
