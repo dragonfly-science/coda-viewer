@@ -7,6 +7,9 @@ BASEDIR = None
 if DEBUG:
     from os.path import abspath, dirname
     BASEDIR = dirname(dirname(dirname(abspath(__file__))))
+    import sys
+    sys.path.append(BASEDIR)
+    DATADIR = BASEDIR + '/testdata'
 
 # Asserting here to make sure that when this project is deployed the location
 # of static files and datasets are set correctly.
@@ -84,8 +87,6 @@ STATICFILES_DIRS = (
     BASEDIR + '/codarender/public/',
 )
 
-print STATICFILES_DIRS
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -136,6 +137,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'codavisualiser',
 )
 
 # A sample logging configuration. The only tangible logging
