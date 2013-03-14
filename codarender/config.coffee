@@ -12,11 +12,13 @@ exports.config =
 
     stylesheets:
       joinTo:
-        'stylesheets/app.css': /^(app|vendor)/
+        'stylesheets/app.css': /^app/
+        'stylesheets/vendor.css': /^vendor/
         'test/stylesheets/test.css': /^test/
       order:
         before: []
         after: []
 
     templates:
+      defaultExtension: 'jade' 
       joinTo: 'javascripts/app.js'

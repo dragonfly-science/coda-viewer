@@ -18,7 +18,10 @@
   "dependencies": {
     "javascript-brunch": ">= 1.0 < 1.5",
     "coffee-script-brunch": ">= 1.0 < 1.6",
-
+    
+    "jade-brunch": "1.5.x",
+    
+    "less-brunch": ">= 1.5 < 1.6",
     "css-brunch": ">= 1.0 < 1.5",
 
     "uglify-js-brunch": ">= 1.0 < 1.5",
