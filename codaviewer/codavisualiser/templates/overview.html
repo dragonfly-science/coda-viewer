@@ -6,5 +6,9 @@
 <body>
   <h2>Overview of {{ dataset }}</h2>
   <div id="overview"></div>
+  <script>
+    var Overview = require("overview");
+    var app = new Overview('{{ dataset }}', 'overview');
+  </script>
 </body>
 </head>  
