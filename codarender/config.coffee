@@ -5,17 +5,18 @@ exports.config =
       defaultExtension: 'coffee'
       joinTo:
         'javascripts/app.js': /^app/
+        'javascripts/spine.js': /^vendor\/js\/spine/
         'javascripts/vendor.js': /^vendor/
         'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
         'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
       order:
         before: [
           'vendor/js/spine/spine.js',
-          'vendor/js/spine/lib/ajax.js',
-          'vendor/js/spine/lib/local.js',
-          'vendor/js/spine/lib/manager.js',
-          'vendor/js/spine/lib/route.js',
-          'vendor/js/spine/lib/tmpl.js'
+          'vendor/js/spine/ajax.js',
+          'vendor/js/spine/local.js',
+          'vendor/js/spine/manager.js',
+          'vendor/js/spine/route.js',
+          'vendor/js/spine/tmpl.js'
         ]
         
         after: ['vendor/js/bootstrap.js']
