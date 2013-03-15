@@ -1,13 +1,12 @@
 class Overview extends Spine.Controller
-  events: 'click #plot-selected': 'clicked_selected', 'click #plot-all': 'clicked_all'
-
   constructor: ->
     super
     @routes
-      "/users/:id": (params) ->
-        console.log("/users/", params.id)
-      "/users": ->
-        console.log("users")
+      "plot-all": ->
+        @render_plots()
+        console.log 'plot-all'
+      "plot-selected": ->
+        console.log 'plot-selected'
         
     Spine.Route.setup()
     
@@ -16,13 +15,19 @@ class Overview extends Spine.Controller
     $.getJSON("/api.v0/#{@dataset}/variables", (data) ->
       ctx_obj.html require('views/overview')({variables: data, size:12})      
     )
-  
-  # this works but it is not what we want to do as we should be using #urlfragments
-  clicked_selected: (e) ->
-    console.log e
     
-  clicked_all: (e) ->
-    console.log e
+  render_plots: ->
+    @html "<h1>Some Plots</h1>"
+    
+    # TODOs
+    # - setup routing so that clicking back to bare overview gives back the list
+    # of variables - and preserves the state so that the list of variables is 
+    # the same
+    # - probably need to setup a model to store variable data in for this to 
+    # work
+    # - need to think about how to use routing and model sync to server to 
+    # allow for storing the history of the session - could be a really neat and
+    # easy way to achieve this
 
 module.exports = Overview
     
