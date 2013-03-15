@@ -2,13 +2,16 @@
 <head>
   <script src="/static/javascripts/app.js"></script>
   <script src="/static/javascripts/vendor.js"></script>
+  <link rel="stylesheet" href="/static/stylesheets/app.css">
+  <link rel="stylesheet" href="/static/stylesheets/vendor.css">
 </head>
 <body>
   <h2>Overview of {{ dataset }}</h2>
   <div id="overview"></div>
   <script>
     var Overview = require("overview");
-    var app = new Overview('{{ dataset }}', 'overview');
+    var app = new Overview({el: $('#overview'), dataset: '{{ dataset }}'});
+    app.render();
   </script>
 </body>
 </head>  

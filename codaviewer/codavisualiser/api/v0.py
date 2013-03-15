@@ -1,7 +1,7 @@
 # not sure if this is really an api yet :)
 
 from django.http import HttpResponse
-from ..codaaccess import get_data as get_coda_data
+from ..codaaccess import get_data as get_coda_data, variables
 
 import json
 import numpy 
@@ -16,3 +16,7 @@ def get_data(request, dataset, variable):
     response = HttpResponse(mimetype="image/png")
     response.write(arraybuffer)
     return response
+    
+def get_variable_list(request, dataset):
+    varlist = variables(dataset)
+    return HttpResponse(json.dumps(varlist), mimetype='application/json')

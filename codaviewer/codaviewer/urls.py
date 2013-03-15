@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^api.v0/(?P<dataset>.*)/variables$', 'codavisualiser.api.v0.get_variable_list'),
     url(r'^api.v0/(?P<dataset>.*)/data/(?P<variable>.*)', 'codavisualiser.api.v0.get_data'),
 
     url(r'^(?P<dataset>.*)/variables$', 'codavisualiser.views.variables'),

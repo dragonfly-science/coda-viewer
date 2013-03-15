@@ -1,1 +1,10 @@
-div#foo.bar.baz
+h3 Select the variables of interest
+
+select#varlist(multiple="multiple", size=12)
+  each variable in variables
+    option #{variable}
+
+p
+  button#plot-selected.btn.btn-primary(type="button") Plot Selected Variables
+  button#plot-all.btn(type="button") Plot All Variables
+    
